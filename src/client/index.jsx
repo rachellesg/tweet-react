@@ -5,36 +5,31 @@ import tweets from 'tweets'
 
 class App extends React.Component {
   render() {
-    const Tweets = tweets.tweets;
-    console.log(Tweets);
-    const listOfFruits = [
-      "apples",
-      "bananas",
-      "pineapple"
-    ];
+    const allTweets = tweets.tweets;
+    console.log(allTweets);
     return (
       <div>
-        <Fruits fruits={listOfFruits}/>
+        <Tweets hello={allTweets}/>
       </div>
     );
   }
 }
 
-class Fruits extends React.Component {
+class Tweets extends React.Component {
   render () {
-    let fruitListItems = this.props.fruits.map(fruit => {
-      return <li><Fruit name={fruit} /></li>
+    let tweetList = this.props.hello.map(tweet => {
+      return <li>++ <Tweet name={tweet.text} content={tweet.content} date={tweet.created_at} /></li>
     });
     return (
-      <div className="tweets">{fruitListItems}</div>
+      <div className="tweets">{tweetList}</div>
     );
   }
 }
 
-class Fruit extends React.Component {
+class Tweet extends React.Component {
   render () {
     return (
-      <div className="username">{this.props.name}</div>
+      <div className="username">{this.props.name} {this.props.content} {this.props.date}</div>
     );
   }
 }
