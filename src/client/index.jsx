@@ -18,7 +18,7 @@ class App extends React.Component {
 class Tweets extends React.Component {
   render () {
     let tweetList = this.props.hello.map(tweet => {
-      return <div className="col-12 mb-3 d-flex card"><Tweet profileimage={tweet.user.profile_image_url} username={tweet.user.screen_name} name={tweet.user.name} content={tweet.text} date={tweet.created_at} retweetCount={tweet.retweet_count} favCount={tweet.favorite_count}/></div>
+      return <div className="col-12 mb-3 d-flex card"><Tweet profileimage={tweet.user.profile_image_url} username={tweet.user.screen_name} name={tweet.user.name} content={tweet.text.split('<br/>')} date={tweet.created_at} retweetCount={tweet.retweet_count} favCount={tweet.favorite_count}/></div>
     });
     return (
       <div className="row tweets">{tweetList}</div>
